@@ -7,6 +7,7 @@ import (
     "github.com/gorilla/mux"
     "time"
     "encoding/json"
+    detail "github.com/PutraSinaga/go-web-app-microservices/src/go-microservices/detail"
 )
 
 
