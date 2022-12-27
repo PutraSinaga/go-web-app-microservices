@@ -31,7 +31,7 @@ func detailHandler(w http.ResponseWriter, r *http.Request){
 
     fmt.Println("lihat detail..")
 
-    hostname, err := detail.GetHostname
+    hostname, err := detail.GetHostname()
     if err != nil {
         panic(err)
     }
