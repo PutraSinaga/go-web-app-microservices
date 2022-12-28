@@ -41,6 +41,15 @@ func detailHandler(w http.ResponseWriter, r *http.Request){
     IP, _ := detail.GetIP()
     fmt.Println(hostname, IP)
 
+    response := map[string]string{
+        "hostname" : hostname, 
+        "IP ADDRESS" : IP.String(), 
+
+        
+    }
+
+    json.NewEncoder(w).Encode(response)
+
  
 }
 
@@ -50,7 +59,7 @@ func main() {
     r.HandleFunc("/health", healthHandler)
     r.HandleFunc("/", rootHandler)
     r.HandleFunc("/detail", detailHandler)
-    
+    fmt.Println("server sedang berjalan")
 
 
     log.Fatal(http.ListenAndServe(":8000", r))

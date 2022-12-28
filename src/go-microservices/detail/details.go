@@ -4,7 +4,6 @@ import (
 	"os"
 	"log"
 	"net"
-	"strings"
 )
 
 func GetHostname() (string, error) {
@@ -20,7 +19,7 @@ func GetIP() (net.IP, error) {
 
 	defer conn.Close()
 
-	localAddr:= conn.localAddr().(*net.UDPAddr)
+	localAddr:= conn.LocalAddr().(*net.UDPAddr)
 
 	return localAddr.IP, err
 }
