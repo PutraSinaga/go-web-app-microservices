@@ -37,6 +37,10 @@ func detailHandler(w http.ResponseWriter, r *http.Request){
     }
 
     fmt.Println(hostname)
+
+    IP, _ := detail.GetIP()
+    fmt.Println(hostname, IP)
+
  
 }
 
@@ -45,6 +49,8 @@ func main() {
     r := mux.NewRouter()
     r.HandleFunc("/health", healthHandler)
     r.HandleFunc("/", rootHandler)
+    r.HandleFunc("/detail", detailHandler)
+    
 
 
     log.Fatal(http.ListenAndServe(":8000", r))
