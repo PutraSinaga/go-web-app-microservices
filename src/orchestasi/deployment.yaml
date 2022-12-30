@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  simple-microservices-deployment
+  namespace: default
+  labels:
+    app:  simple-microservices-deployment
+spec:
+  selector:
+    matchLabels:
+      app: simple-microservices-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app:  simple-microservices-deployment
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name: simple-microservices
+        image: putrasaut/simple-web-app
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8001
+      restartPolicy: Always
